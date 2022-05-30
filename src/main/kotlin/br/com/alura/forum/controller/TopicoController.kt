@@ -34,7 +34,7 @@ class TopicoController(private val service: TopicoService) {
 
     @PutMapping
     fun atualizar(@RequestBody @Valid form: AtualizacaoTopicoForm){
-
+        service.atualizar(form)
     }
 
 }
