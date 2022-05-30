@@ -40,7 +40,8 @@ class TopicoService(private var topicos: kotlin.collections.List<Topico> = Array
         val topico = topicos.stream().filter { t ->
             t.id == form.id
         }.findFirst().get()
-        topicos = topicos.minus(topico).plus(Topico(
+        topicos = topicos.minus(topico).plus(
+            Topico(
             id = form.id,
             titulo = form.titulo,
             mensagem = form.mensagem,
@@ -50,5 +51,12 @@ class TopicoService(private var topicos: kotlin.collections.List<Topico> = Array
             respostas = topico.respostas,
             status = topico.status
         ))
+    }
+
+    fun deletar(id: Long) {
+        val topico = topicos.stream().filter { t ->
+            t.id == id
+        }.findFirst().get()
+        topicos = topicos.minus(topico)
     }
 }
